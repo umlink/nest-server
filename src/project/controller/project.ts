@@ -1,4 +1,13 @@
-import { Controller, Post, Get, Body, Query, Param } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Get,
+  Body,
+  Query,
+  Param,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { ProjectService } from '../service/project';
 import { ApiTags } from '@nestjs/swagger';
 import { CreateProjectInput, CreateProjectOutput } from '../dto/project';
@@ -13,6 +22,12 @@ export class ProjectController {
     console.log(query, param);
     return this.projectService.getProjectName();
   }
+
+  @Get('exception')
+  getException(): string {
+    throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+  }
+
   @Post('/create')
   createProject(@Body() body: CreateProjectInput): CreateProjectOutput {
     return body;
