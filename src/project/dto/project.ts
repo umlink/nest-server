@@ -9,7 +9,15 @@ export class CreateProjectInput {
 
   @ApiProperty()
   description: number;
+}
+
+export class CreateProjectOutput {
+  @ApiProperty()
+  id: string;
 
   @ApiProperty()
-  type: 'PUBLIC' | 'PRIVATE';
+  name: string;
+
+  @ApiProperty()
+  description: number;
 }

@@ -1,7 +1,7 @@
 import { Controller, Post, Get, Body, Query, Param } from '@nestjs/common';
 import { ProjectService } from '../service/project';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateProjectInput } from '../dto/project';
+import { CreateProjectInput, CreateProjectOutput } from '../dto/project';
 
 @ApiTags('Project')
 @Controller('project')
@@ -14,7 +14,7 @@ export class ProjectController {
     return this.projectService.getProjectName();
   }
   @Post('/create')
-  createProject(@Body() body: CreateProjectInput): any {
+  createProject(@Body() body: CreateProjectInput): CreateProjectOutput {
     return body;
   }
 }
